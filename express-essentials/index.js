@@ -8,6 +8,17 @@ app.use(express.static("public"));
 
 app.use("/images", express.static("images"));
 
+app.get(
+  "/next",
+  (req, res, next) => {
+    console.log("going next .apply.call.");
+    next();
+  },
+  (req, res) => {
+    res.send("Called after next");
+  }
+);
+
 app.get("/", (req, res) => {
   res.json(data);
 });
