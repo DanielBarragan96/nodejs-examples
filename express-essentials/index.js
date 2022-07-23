@@ -42,6 +42,16 @@ app.get("/redirect", (req, res) => {
   res.redirect("http://www.google.com");
 });
 
+app.get("/error", (req, res) => {
+  throw new Error();
+});
+
+//catch any throwed error
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send("Something is broken");
+});
+
 app.listen(PORT, () => {
   console.log(`The server is running on localhost:${PORT}`);
 });
