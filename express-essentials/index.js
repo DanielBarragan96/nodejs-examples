@@ -8,6 +8,17 @@ app.use(express.static("public"));
 
 app.use("/images", express.static("images"));
 
+app.get("/", (req, res) => {
+  res.json(data);
+});
+
+app.route("/class/:id").get((req, res) => {
+  const studentId = Number(req.params.id);
+
+  const student = data.filter((student) => student.id == studentId);
+  res.send(student);
+});
+
 app.get(
   "/next",
   (req, res, next) => {
@@ -19,15 +30,8 @@ app.get(
   }
 );
 
-app.get("/", (req, res) => {
-  res.json(data);
-});
-
-app.route("/class/:id").get((req, res) => {
-  const studentId = Number(req.params.id);
-
-  const student = data.filter((student) => student.id == studentId);
-  res.send(student);
+app.get("/redirect", (req, res) => {
+  res.redirect("http://www.google.com");
 });
 
 app.listen(PORT, () => {
