@@ -8,8 +8,15 @@ app.use(express.static("public"));
 
 app.use("/images", express.static("images"));
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json(data);
+});
+
+app.post("/item", (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
 });
 
 app.route("/class/:id").get((req, res) => {
