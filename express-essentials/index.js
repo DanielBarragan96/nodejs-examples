@@ -8,7 +8,8 @@ app.use(express.static("public"));
 
 app.use("/images", express.static("images"));
 
-app.use(express.json());
+// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.json(data);
