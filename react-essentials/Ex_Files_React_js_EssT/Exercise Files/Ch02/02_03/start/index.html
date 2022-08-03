@@ -16,14 +16,15 @@
     <div id="root"></div>
 
     <script type="text/javascript">
-      ReactDOM.render(
-        <ul>
-          <li>a</li>
-          <li>b</li>
-          <li>c</li>
-        </ul>,
-        document.getElementById("root")
+      let ul = React.createElement(
+        "ul",
+        { style: { color: "blue" } },
+        React.createElement("li", null, "save"),
+        React.createElement("li", null, "me"),
+        React.createElement("li", null, "JSX")
       );
+
+      ReactDOM.render(ul, document.getElementById("root"));
     </script>
   </body>
 </html>
