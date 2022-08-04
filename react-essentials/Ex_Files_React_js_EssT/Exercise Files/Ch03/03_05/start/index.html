@@ -27,11 +27,14 @@
       function Main(props) {
         return (
           <section>
+            <img
+              alt="A server present a plate"
+              height={200}
+              src="./plate.jpg"
+            />
             <ul>
               {props.dishes.map((dish) => (
-                <li key={dish.id}>
-                  {dish.title}
-                </li>
+                <li key={dish.id}>{dish.title}</li>
               ))}
             </ul>
           </section>
@@ -50,34 +53,24 @@
         "Black Bean Soup",
         "Macaroni and Cheese",
         "Salmon and Potatoes",
-        "Pizza"
+        "Pizza",
       ];
-      const dishObjects = dishes.map(
-        (dish, i) => ({
-          id: i,
-          title: dish
-        })
-      );
+      const dishObjects = dishes.map((dish, i) => ({
+        id: i,
+        title: dish,
+      }));
 
       function App() {
         return (
           <div>
             <Header name="Cindy" />
-            <Main
-              adjective="amazing"
-              dishes={dishObjects}
-            />
-            <Footer
-              year={new Date().getFullYear()}
-            />
+            <Main adjective="amazing" dishes={dishObjects} />
+            <Footer year={new Date().getFullYear()} />
           </div>
         );
       }
 
-      ReactDOM.render(
-        <App />,
-        document.getElementById("root")
-      );
+      ReactDOM.render(<App />, document.getElementById("root"));
     </script>
   </body>
 </html>
